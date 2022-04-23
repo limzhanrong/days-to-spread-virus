@@ -114,3 +114,27 @@
     flex-direction: column;
   }
 }
+
+.cell {
+  background: #FCFAF9;
+  border: 1px solid #48E5C2;
+  border-radius: 4px;
+  float: left;
+  line-height: 45px;
+  height: 45px;
+  text-align: center;
+  width: 45px;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 600;
+
+  /* &:focus {
+    outline: none;
+  } */
+}
+
+.grid-container {
+  display: inline-grid;
+}
+
+

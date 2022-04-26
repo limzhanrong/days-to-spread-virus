@@ -4,7 +4,7 @@ import { Grid } from '@mui/material'
 
 const CellGenerator = ({grid, handleClick}) => {
   return (
-    <Grid container>
+    <Grid container alignItems="center" justifyContent="center" direction="column">
       {grid.map((row, r)=>{
           return (
             <Grid key={r} item xs={12}>

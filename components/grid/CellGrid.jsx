@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CellGenerator from './CellGenerator'
 
 
-const CellGrid = ({rowSize, colSize}) => {
+const CellGrid = ({rowSize = 10, colSize = 20}) => {
   // const [size, setSize] = useState()
   const [grid, setGrid] = useState(generateEmptyArray(rowSize, colSize))
 

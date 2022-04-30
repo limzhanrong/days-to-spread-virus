@@ -1,10 +1,21 @@
-import React, {useEffect, useState} from 'react'
-import styles from '/styles/Home.module.css'
+import React, {useContext, useEffect, useState} from 'react'
 
-const Cell = ({row, col, val, handleClick}) => {
+const Cell = ({row, col, val, handleMouseDown, handleMouseOver, handleMouseUp, optionsData, selected}) => {
 
   return (
-    <div onClick={()=>handleClick(row,col)} className={styles.cell}>{val}</div>
+    <div 
+      style={{  
+        backgroundImage: "url(" + ((val in optionsData) ? optionsData[val]?.image : "") + ")",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+      }}
+      onMouseDown={()=>handleMouseDown(row,col,selected)} 
+      onMouseEnter={()=>handleMouseOver(row,col,selected)}
+      onMouseUp={()=>handleMouseUp()}
+      className="cell"
+      >
+    </div>
   )
 }
 

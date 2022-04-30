@@ -1,15 +1,34 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Cell from '/components/grid/Cell'
 import { Grid } from '@mui/material'
+import { AppContext } from 'global/StateContext'
 
-const CellGenerator = ({grid, handleClick}) => {
+
+const CellGenerator = ({grid, handleMouseDown, handleMouseOver, handleMouseUp}) => {
+  const { optionsData, useSelectedState } = useContext(AppContext)
+  const [selected, setSelected] = useSelectedState
+
   return (
-    <Grid container alignItems="center" justifyContent="center" direction="column">
+    <Grid container alignItems="center" justifyContent="center" direction="column" onMouseLeave={handleMouseUp}>
       {grid.map((row, r)=>{
           return (
-            <Grid key={r} item xs={12}>
+            <Grid key={"row" + r} item xs={12}>
             {
-            row.map((item, c)=>{return <Cell key={c} row={r} col={c} val={grid[r][c]} handleClick={handleClick}>{grid[r][c]}</Cell>})
+            row.map((item, c)=>{
+              return (
+              <Cell 
+                key={"col" + c} 
+                row={r} 
+                col={c} 
+                val={grid[r][c]} 
+                selected={selected} 
+                optionsData={optionsData}
+                handleMouseDown={handleMouseDown}
+                handleMouseOver={handleMouseOver}
+                handleMouseUp={handleMouseUp}
+              >
+                  {grid[r][c]}
+              </Cell>)})
             }
             </Grid>
           )

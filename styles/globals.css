@@ -14,3 +14,42 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.transparent-border{
+  border: 2px solid transparent;
+}
+
+.selected-option {
+  background:#eee;
+  border: 2px solid black;
+}
+
+.cell {
+  background: #FCFAF9;
+  border: 1px solid #48E5C2;
+  border-radius: 2px;
+  float: left;
+  line-height: 32px;
+  height: 32px;
+  text-align: center;
+  width: 32px;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 600;
+  user-select: none;
+}
+
+.large-cell {
+  background: #FCFAF9;
+  border: 1px solid #48E5C2;
+  border-radius: 2px;
+  float: left;
+  line-height: 32px;
+  height: 32px;
+  text-align: center;
+  width: 32px;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 600;
+  user-select: none;
+}

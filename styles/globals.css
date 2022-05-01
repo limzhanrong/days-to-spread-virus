@@ -16,7 +16,7 @@ a {
 }
 
 .transparent-border{
-  border: 2px solid transparent;
+  border: 2px solid transparent !important;
 }
 
 .selected-option {

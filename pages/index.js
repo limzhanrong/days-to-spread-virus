@@ -10,13 +10,13 @@ export default function Home() {
         <title>Virus</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Autocomplete
+      {/* <Autocomplete
         disablePortal
         id="combo-box-demo"
         options={rows}
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="Movie" />}
-      />
+      /> */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
 export const AppContext = createContext();
 
@@ -33,7 +33,8 @@ export function AppContextProvider(props) {
       value={{
         optionsData:optionsData, 
         useSelectedState:[selected, setSelected], 
-        useRunningState:[running, setRunning]}}
+        useRunningState:[running, setRunning]
+      }}
     >
       {props.children}
     </AppContext.Provider>

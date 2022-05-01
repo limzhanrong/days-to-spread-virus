@@ -21,7 +21,7 @@ a {
 
 .selected-option {
   background:#eee;
-  border: 2px solid black;
+  border: 2px solid black !important;
 }
 
 .cell {

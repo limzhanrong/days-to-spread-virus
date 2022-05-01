@@ -29,8 +29,10 @@ const CellGrid = ({rowSize = 15, colSize = 35}) => {
     let s = [[]]
     for(let r = 0; r < grid.length; r++){
       for(let c = 0; c < grid[r].length; c++){
-        if(grid[r][c] === "virus")
-        s[0].push([r,c])
+        if(grid[r][c] === "virus" || grid[r][c] === "sick"){
+          s[0].push([r,c])
+        }
+        
       }
     }
 
@@ -46,7 +48,11 @@ const CellGrid = ({rowSize = 15, colSize = 35}) => {
           let newRow = newCoord[0]
           let newCol = newCoord[1]
           if(isInBound(grid, newRow, newCol) && !blockers.has(grid[newRow][newCol])){
-            grid[newRow][newCol] = "virus"
+            if(grid[newRow][newCol] === "healthy" || grid[newRow][newCol] === "sick"){
+              grid[newRow][newCol] = "sick"
+            }else{
+              grid[newRow][newCol] = "virus"
+            }
             nextLevel.push( [newRow, newCol] )
           }
         }
@@ -58,8 +64,10 @@ const CellGrid = ({rowSize = 15, colSize = 35}) => {
         s.push(nextLevel)
       }
     }
+  }
 
-    console.log("end of algo")
+  const handleReset = () => {
+    setGrid(generateEmptyArray(rowSize, colSize))
   }
 
   const handleMouseDown = (r,c,val) => {
@@ -106,7 +114,7 @@ const CellGrid = ({rowSize = 15, colSize = 35}) => {
           )
       })}
     </Grid>
-    <CustomSpeedDial handleRun={runAlgorithm}></CustomSpeedDial>
+    <CustomSpeedDial handleRun={runAlgorithm} handleReset={handleReset}></CustomSpeedDial>
     </div>
   )
 }

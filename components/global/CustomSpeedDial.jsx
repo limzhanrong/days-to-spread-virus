@@ -3,7 +3,7 @@ import { SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material'
 import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 
-const CustomSpeedDial = ({handleRun}) => {
+const CustomSpeedDial = ({handleRun, handleReset}) => {
 
   const handleClick = () => {
     alert("hi")
@@ -11,7 +11,7 @@ const CustomSpeedDial = ({handleRun}) => {
 
   const actions = [
     { icon: <FileCopyIcon />, name: 'Copy', function: handleRun },
-    { icon: <SaveIcon />, name: 'Save',function: handleClick},
+    { icon: <SaveIcon />, name: 'Save',function: handleReset },
   ];
   
   return (

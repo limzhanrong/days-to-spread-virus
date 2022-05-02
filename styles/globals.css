@@ -53,3 +53,11 @@ a {
   font-weight: 600;
   user-select: none;
 }
+
+.virus-background {
+  background-image: url("/virus.png") !important;
+}
+
+.sick-background {
+  background-image: url("/sick.png") !important;
+}

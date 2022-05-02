@@ -3,7 +3,8 @@ import React, {useContext, useEffect, useState} from 'react'
 const Cell = ({row, col, val, handleMouseDown, handleMouseOver, handleMouseUp, optionsData, selected}) => {
 
   return (
-    <div 
+    <div
+      id={"row"+row+"col"+col}
       style={{  
         backgroundImage: "url(" + ((val in optionsData) ? optionsData[val]?.image : "") + ")",
         backgroundPosition: 'center',

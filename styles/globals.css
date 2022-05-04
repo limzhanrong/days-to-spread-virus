@@ -29,10 +29,10 @@ a {
   border: 1px solid #48E5C2;
   border-radius: 2px;
   float: left;
-  line-height: 32px;
-  height: 32px;
+  line-height: 2rem;
+  height: 2rem;
   text-align: center;
-  width: 32px;
+  width: 2rem;
   cursor: pointer;
   color: #333333;
   font-weight: 600;
@@ -52,6 +52,7 @@ a {
   color: #333333;
   font-weight: 600;
   user-select: none;
+  aspect-ratio: 1/1;
 }
 
 .virus-background {

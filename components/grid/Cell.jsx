@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React from 'react'
 
 const Cell = ({row, col, val, handleMouseDown, handleMouseOver, handleMouseUp, optionsData, selected}) => {
 

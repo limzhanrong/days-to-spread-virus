@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Avatar } from '@mui/material';
 
-export default function CustomizedMenus({text, IconComponent, options}) {
+export default function CustomizedMenus({text, IconComponent, options, color="primary"}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -30,6 +30,7 @@ export default function CustomizedMenus({text, IconComponent, options}) {
         aria-controls={open ? 'demo-customized-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        color={color}
         sx={{
             justifyContent: "flex-start",
             maxWidth: '300px', 

@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import Cell from '/components/grid/Cell'
 import OptionPanel from './OptionPanel'
 
 import { TableRow, TableBody, Table, TableCell, Container } from '@mui/material'
 
 
-// {rowSize = 15, colSize = 35}
-const CellGrid = ({rowSize = 15, colSize = 35, selected,setSelected, optionsData, count, setCount}) => {
+const CellGrid = ({rowSize = 15, colSize = 35, selected,setSelected, optionsData, count, setCount, openSnackbar}) => {
 
   const generateEmptyArray = (rowSize, colSize) => {
     const arr = []
@@ -24,13 +23,12 @@ const CellGrid = ({rowSize = 15, colSize = 35, selected,setSelected, optionsData
   const [mouseDown, setMouseDown] = useState(false)
   const isRunningRef = useRef(false);
   const [runningState, setRunningState] = useState(false)
-
-  // useEffect(()=>{
-  //   // setGrid(generateEmptyArray(size))
-  // }, [rowSize, colSize])
+  const [speed, setSpeed] = useState(30)
+  const speedRef = useRef(30)
 
   const handleReset = () => {
     if(isRunningRef.current === true){
+      openSnackbar("unable to reset while running!", "error")
       return
     }
     for(let k in count){
@@ -42,7 +40,7 @@ const CellGrid = ({rowSize = 15, colSize = 35, selected,setSelected, optionsData
 
   const handleMouseDown = (r,c,val) => {
     if(runningState === true){
-      alert("unable to click when running")
+      openSnackbar("unable to click while running!", "error")
       return
     }
     setMouseDown(true)
@@ -138,15 +136,16 @@ const CellGrid = ({rowSize = 15, colSize = 35, selected,setSelected, optionsData
       }
       setGrid([...grid])
       setCount({...count})
-      await wait(500)
+      await wait(1000-(speedRef.current*9))
     }
-      isRunningRef.current = false
-      setRunningState(false)
-    // count.days += 1
-    // setCount({...count})
-    // setGrid([...grid])
-    // isRunningRef.current = false
-    // setRunningState(false)
+    isRunningRef.current = false
+    setRunningState(false)
+    if(count.healthy >= 1){
+      openSnackbar("simulation paused!", "info")
+    }else{
+      openSnackbar("simulation complete!", "success")
+    }
+    
   }
 
 
@@ -157,6 +156,7 @@ const CellGrid = ({rowSize = 15, colSize = 35, selected,setSelected, optionsData
 
   const handleClear = (oldValue, newValue = null) =>{
     if(isRunningRef.current === true){
+      openSnackbar("unable to clear while running!", "error")
       return
     }
     for(let r = 0; r < grid.length; r++){
@@ -184,6 +184,9 @@ const CellGrid = ({rowSize = 15, colSize = 35, selected,setSelected, optionsData
         handleReset={handleReset}
         isRunningRef={isRunningRef}
         runningState={runningState}
+        speed={speed}
+        setSpeed={setSpeed}
+        speedRef={speedRef}
       >
       </OptionPanel>
     <Container>

@@ -1,20 +1,24 @@
 import { Grid, Button, Box, Typography, Avatar, Slider } from '@mui/material'
 import Image from 'next/image'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
-import React, { useEffect } from 'react'
+import React from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import OperationButton from './OperationButton';
 import DropDownButton from './DropDownButton'
 import PauseIcon from '@mui/icons-material/Pause';
-import { Label } from '@mui/icons-material';
 
-const OptionPanel = ({optionsData, selected, setSelected, count, handleRun, handleReset, handleClear, handleStop, runningState}) => {
+const OptionPanel = ({optionsData, selected, setSelected, count, handleRun, handleReset, handleClear, handleStop, runningState, speed, setSpeed, speedRef}) => {
 
   const handleClick = (val) => {
     console.log("val: ", val)
     setSelected(val)
+  }
+
+  const changeSpeed = (e) =>{
+    setSpeed(e.target.value)
+    speedRef.current = e.target.value
   }
 
   const clearOptions = [
@@ -91,8 +95,8 @@ const OptionPanel = ({optionsData, selected, setSelected, count, handleRun, hand
       </Grid>
       {/* Buttons */}
       <Grid item container lg={2.5} sx={{display:"flex", justifyContent:"center"}}>
-        <DropDownButton text={"Reset"} options={resetOptions} IconComponent={<RestartAltIcon/>}></DropDownButton>
-        <DropDownButton text={"Clear"} options={clearOptions} IconComponent={<DeleteIcon/>}></DropDownButton>
+        <DropDownButton text={"Reset"} color={"error"} options={resetOptions} IconComponent={<RestartAltIcon/>}></DropDownButton>
+        <DropDownButton text={"Clear"} color={"warning"} options={clearOptions} IconComponent={<DeleteIcon/>}></DropDownButton>
       {!runningState? 
         <OperationButton handleClick={handleRun} color={"success"} text="Run" IconComponent={<SendIcon/>}></OperationButton>
         :<OperationButton handleClick={handleStop} color={"error"} text="Stop" IconComponent={<PauseIcon/>}></OperationButton>}
@@ -101,7 +105,9 @@ const OptionPanel = ({optionsData, selected, setSelected, count, handleRun, hand
       <Typography gutterBottom>Speed</Typography>
         <Slider
           size="small"
-          defaultValue={70}
+          defaultValue={speed}
+          value={speed}
+          onChange={(e)=>changeSpeed(e)}
           aria-label="Small"
           valueLabelDisplay="auto"
         />

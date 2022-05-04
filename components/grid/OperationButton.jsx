@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button } from '@mui/material'
 
-const OperationButton = ({handleClick, text, IconComponent,color=null}) => {
+const OperationButton = ({handleClick, text, IconComponent,color="primary"}) => {
   return (
     <Button 
         variant="contained" 
         onClick={handleClick}
-        color={color?color:"primary"}
+        color={color}
         sx={{
             justifyContent: "flex-start",
             maxWidth: '300px', 

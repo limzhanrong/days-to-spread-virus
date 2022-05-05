@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import CellGrid from '/components/grid/CellGrid'
-import { Button } from '@mui/material'
 import CustomSnackbar from 'components/global/CustomSnackbar'
+import Head from 'next/head'
+
 
 
 export default function Home() {
@@ -57,6 +58,12 @@ export default function Home() {
   
   return (
     <>
+      <Head>
+        <title>Virus Simulator</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="icon" href="/virus.png" />
+
+      </Head>
       <CellGrid
         selected={selected}
         setSelected={setSelected}

@@ -83,12 +83,12 @@ const CellGrid = ({rowSize = 15, colSize = 35, selected,setSelected, optionsData
     let s = [[]]
     
     if(count.healthy === 0 || (count.virus === 0 && count.sick === 0) || isRunningRef.current === true){
-      alert("invalid")
+      openSnackbar("please input at least 1 virus and 1 healthy", "error")
       return
     }
     if(isRunningRef.current === true){
       isRunningRef.current = false
-      alert("already running")
+      openSnackbar("application already running", "error")
       return
     }
     isRunningRef.current = !isRunningRef.current

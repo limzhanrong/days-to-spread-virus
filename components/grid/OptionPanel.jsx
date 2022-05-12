@@ -12,7 +12,6 @@ import PauseIcon from '@mui/icons-material/Pause';
 const OptionPanel = ({optionsData, selected, setSelected, count, handleRun, handleReset, handleClear, handleStop, runningState, speed, setSpeed, speedRef}) => {
 
   const handleClick = (val) => {
-    console.log("val: ", val)
     setSelected(val)
   }
 
